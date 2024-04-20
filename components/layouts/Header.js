@@ -20,6 +20,11 @@ const Header = () => {
     const notificationBellImage = require('../../assets/Header/notification.png')
 
     return (
+
+        <React.Fragment>
+
+       {/* Header Section */}
+
         <View style={HeaderStyles.body}>
             <View style={HeaderStyles.headerParent}>
                 <View style={HeaderStyles.headerItems}>
@@ -41,6 +46,26 @@ const Header = () => {
             </View>
 
         </View>
+
+        {/* Navigation Menu Section */}
+
+        <View style={HeaderStyles.navigationMenu}>
+
+            <View style={HeaderStyles.navigationItems}>
+
+            </View>
+
+            <View style={HeaderStyles.navigationItems}>
+                
+            </View>
+
+            <View style={HeaderStyles.navigationItems}>
+                
+            </View>
+
+
+        </View>
+        </React.Fragment>
     )
 
 }
@@ -48,7 +73,7 @@ const Header = () => {
 const HeaderStyles = StyleSheet.create({
 
     body: {
-        marginTop: '20%',
+        marginTop: '15%',
     },
 
     headerParent:{
@@ -68,7 +93,7 @@ const HeaderStyles = StyleSheet.create({
 
     heading:{
         fontSize: 20,
-        fontWeight: '600',
+        fontWeight: '700',
         color: Colors.blackPrimary,
 
     },
@@ -76,6 +101,8 @@ const HeaderStyles = StyleSheet.create({
     headerItems:{
         verticalAlign: 'middle',
     }
+
+
 
 })
 

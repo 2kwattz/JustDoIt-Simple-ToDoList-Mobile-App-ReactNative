@@ -1,5 +1,5 @@
 const Colors = {
-    heading: '#18181B',
+    blackPrimary: '#18181B',
     subheading: '#71717A',
     greyPrimary: '#A0A0A0',
     bluePrimary: '#1CAAD4',

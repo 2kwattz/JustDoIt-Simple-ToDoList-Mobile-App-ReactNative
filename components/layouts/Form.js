@@ -12,6 +12,8 @@ import fonts from '../../styles/fonts';
 
 import Components from '../../styles/components';
 import DottedLine from '../elements/dottedLine';
+import editImage from '../../assets/Order/edit.png';
+import downwardArrow from '../../assets/Order/arrow-down.png'
 
 const calenderImage = require('../../assets/Order/calendar-tick.png')
 
@@ -95,7 +97,7 @@ const Form = () => {
                 <View style={[FormStyles.orderDetails,{margin: 5}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Delivery Method </Text>
-                        <Text style={FormStyles.orderDetailsTextValue}> Pickup </Text>
+                        <Text style={FormStyles.orderDetailsTextValue}> Pickup <Image source={editImage}/> </Text>
                     </View>
                     
                 </View>
@@ -105,7 +107,7 @@ const Form = () => {
                 <View style={[FormStyles.orderDetails,{margin: 5}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Pickup Details </Text>
-                        <Text style={FormStyles.orderDetailsTextGreen}> Paid </Text>
+                        <Text style={FormStyles.orderDetailsTextGreen}> <Image source={downwardArrow}/> </Text>
                     </View>
 
 
@@ -124,6 +126,7 @@ const FormStyles = StyleSheet.create({
         borderColor: Colors.greyMed,
         borderRadius: 20,
         marginHorizontal: 20,
+        paddingBottom: 15,
     },
 
     // Section One : Order Header
@@ -151,6 +154,7 @@ const FormStyles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
+      
     },
 
     greenBadgeText: {
@@ -174,10 +178,11 @@ const FormStyles = StyleSheet.create({
 
     orderDetailsTextKey:{
         color: Colors.subheading,
+        marginLeft: 4,
     },
 
     orderDetailsTextValue:{
-
+        marginRight: 4,
     },
 
     orderDetailsTextBlue:{

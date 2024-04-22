@@ -64,25 +64,17 @@ const Header = () => {
                     </Text></View>
                 </View>
 
-                {/* <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItemText}> Fulfilled  <Text style={HeaderStyles.Notifications}> 6 </Text>  </Text>
-                </View> */}
-
                 <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItemText}> Fulfilled  <Text style={HeaderStyles.Notifications}> 6 </Text>  </Text>
-                </View>
-
-                {/* <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItem}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
+                    <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
                         3
                     </Text></View>
-                </View> */}
-
-
-                <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItemText}> Cancelled  <Text style={HeaderStyles.Notifications}> 2 </Text> </Text>
                 </View>
 
+                <View style={HeaderStyles.navigationItems}>
+                    <Text style={HeaderStyles.navigationItemText}> Cancelled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
+                        2
+                    </Text></View>
+                </View>
 
             </View>
 
@@ -151,6 +143,7 @@ const HeaderStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         width: '100%',
+        marginHorizontal: 10,
     },
 
     navigationItems: {
@@ -163,7 +156,7 @@ const HeaderStyles = StyleSheet.create({
     },
 
     navigationItemText: {
-        padding: 10,
+        padding: 5,
         fontWeight: '700',
         fontSize: 15,
         color: Colors.subheading,
@@ -176,7 +169,8 @@ const HeaderStyles = StyleSheet.create({
 
     navigationItemTextActive: {
         color: Colors.bluePrimary,
-        paddingHorizontal: 7,
+        paddingLeft: 10,
+        // paddingHorizontal: 10,
         fontWeight: '700',
 
     },
@@ -190,7 +184,7 @@ const HeaderStyles = StyleSheet.create({
 
     innertext: {
         fontWeight: '700',
-        color: Colors.greenPrimary,
+        color: Colors.subheading,
         paddingVertical: 1,
         paddingHorizontal: 9,
         borderRadius: 50,
@@ -206,10 +200,18 @@ const HeaderStyles = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
+
+        objectFit: 'contain'
     },
 
     Notifications: {
         backgroundColor: Colors.greySecondary,
+        borderRadius: 40,
+        flex: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 2,
+        marginRight: 15,
     },
 
     // Horizontal Line

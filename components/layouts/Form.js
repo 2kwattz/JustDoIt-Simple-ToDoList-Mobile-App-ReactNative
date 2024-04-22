@@ -14,6 +14,7 @@ import Components from '../../styles/components';
 import DottedLine from '../elements/dottedLine';
 import editImage from '../../assets/Order/edit.png';
 import downwardArrow from '../../assets/Order/arrow-down.png'
+const arrowSquareRight = require('../../assets/Order/arrow-square-right.png')
 
 const calenderImage = require('../../assets/Order/calendar-tick.png')
 
@@ -28,8 +29,8 @@ const Form = () => {
                         #2345567
                     </Text>
 
-                    <View style={FormStyles.greenBadge}>
-                        <Image source={calenderImage} />
+                    <View style={[FormStyles.greenBadge, {marginHorizontal: 7}]}>
+                        <Image source={calenderImage} style={FormStyles.greenBadgeImage} />
 
 
                         <Text style={FormStyles.greenBadgeText}> Ready For Pickup </Text>
@@ -38,18 +39,20 @@ const Form = () => {
 
                 <DottedLine />
 
+                {/* Order Details */}
+
                 <View style={[FormStyles.orderDetails,{margin: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Order Received On </Text>
-                        <Text style={FormStyles.orderDetailsTextValue}> 25th July 2024 </Text>
+                        <Text style={[FormStyles.orderDetailsTextValue,{marginRight: 7,}]}> 25th July 2024 </Text>
                     </View>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Physician Name </Text>
-                        <Text style={FormStyles.orderDetailsTextValue}> Dr. Mark Paulo </Text>
+                        <Text style={[FormStyles.orderDetailsTextValue,{marginRight: 7,}]}> Dr. Mark Paulo </Text>
                     </View>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Practice Name </Text>
-                        <Text style={FormStyles.orderDetailsTextValue}> Stella Multispeciality </Text>
+                        <Text style={[FormStyles.orderDetailsTextValue,{marginRight: 7,}]}> Stella Multispeciality </Text>
                     </View>
 
                 </View>
@@ -58,10 +61,10 @@ const Form = () => {
 
                 {/* Order Type */}
 
-                <View style={[FormStyles.orderDetails,{margin: 5}]}>
+                <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Order Type </Text>
-                        <Text style={FormStyles.orderDetailsTextBlue}> PAP New Start </Text>
+                        <Text style={[FormStyles.orderDetailsTextBlue,{marginRight: 7,}]}> PAP New Start </Text>
                     </View>
                     
                 </View>
@@ -70,10 +73,10 @@ const Form = () => {
 
                 {/* Product Details */}
 
-                <View style={[FormStyles.orderDetails,{margin: 5}]}>
+                <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Product Details </Text>
-                        <Text style={FormStyles.orderDetailsText}> 4 Items </Text>
+                        <Text style={[FormStyles.orderDetailsTextValue,{marginRight: 7,}]}> 4 Items <Image source={arrowSquareRight} style={FormStyles.arrowSquareRightStyle}/> </Text>
                     </View>
                     
                 </View>
@@ -82,10 +85,10 @@ const Form = () => {
 
                 {/* FInancial Responsibility */}
 
-                <View style={[FormStyles.orderDetails,{margin: 5}]}>
+                <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Financial Responsibility </Text>
-                        <Text style={FormStyles.orderDetailsTextGreen}> Paid </Text>
+                        <Text style={[FormStyles.orderDetailsTextGreen,{marginRight: 7,}]}> Paid </Text>
                     </View>
                     
                 </View>
@@ -94,7 +97,7 @@ const Form = () => {
 
                 {/* Delivery Method */}
 
-                <View style={[FormStyles.orderDetails,{margin: 5}]}>
+                <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Delivery Method </Text>
                         <Text style={FormStyles.orderDetailsTextValue}> Pickup <Image source={editImage}/> </Text>
@@ -104,7 +107,7 @@ const Form = () => {
 
                 <DottedLine />
 
-                <View style={[FormStyles.orderDetails,{margin: 5}]}>
+                <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Pickup Details </Text>
                         <Text style={FormStyles.orderDetailsTextGreen}> <Image source={downwardArrow}/> </Text>
@@ -144,12 +147,14 @@ const FormStyles = StyleSheet.create({
         color: Colors.subheading,
         fontWeight: '700',
         fontSize: 17,
+        marginLeft: 5,
     },
 
     greenBadge: {
         backgroundColor: Colors.greenSecondary,
         borderRadius: 60,
         padding: 5,
+        paddingHorizontal: 8,
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
@@ -160,10 +165,16 @@ const FormStyles = StyleSheet.create({
     greenBadgeText: {
         color: Colors.greenPrimary,
         fontWeight: '700',
+        marginRight: 4,
+    },
+
+    greenBadgeImage: {
+        marginLeft: 4,
     },
 
     orderDetails: {
        width: '95%',
+       
     },
 
     orderDetailsTextContainer:{
@@ -172,13 +183,16 @@ const FormStyles = StyleSheet.create({
         flexWrap: 'wrap',
         width: '100%',
         justifyContent: 'space-between',
-        padding: 5,
+        alignItems: 'center',
+        padding: 3,
 
     },
 
     orderDetailsTextKey:{
         color: Colors.subheading,
         marginLeft: 4,
+       
+
     },
 
     orderDetailsTextValue:{
@@ -193,6 +207,12 @@ const FormStyles = StyleSheet.create({
         color: Colors.greenPrimary,
         fontWeight: '500',
     },
+
+    arrowSquareRightStyle:{
+        objectFit: 'contain',
+        height: 20,
+        
+    }
 
 
 

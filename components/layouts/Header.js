@@ -12,6 +12,7 @@ import fonts from '../../styles/fonts';
 // Components
 
 import Components from '../../styles/components';
+import SearchInput from '../elements/SearchInput';
 
 const Header = () => {
 
@@ -19,6 +20,7 @@ const Header = () => {
     const notificationBellImage = require('../../assets/Header/notification.png')
     const searchImage = require('../../assets/Header/search.png')
     const filtersImage = require('../../assets/Header/filters.png')
+    
 
     return (
 
@@ -66,7 +68,7 @@ const Header = () => {
 
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
-                        3
+                        6
                     </Text></View>
                 </View>
 
@@ -80,12 +82,16 @@ const Header = () => {
 
             <View style={HeaderStyles.horizontalLine}></View>
 
+            {/* Input Search Section */}
+
             <View style={HeaderStyles.searchSection}>
-                <Image source={searchImage} style={[HeaderStyles.searchImage, { position: 'absolute', left: '9%' },]}>
+                {/* <Image source={searchImage} style={[HeaderStyles.searchImage, { position: 'absolute', left: '9%' },]}>
 
                 </Image>
                 <TextInput style={Components.SearchInput}
-                    placeholder="        Search by Order Id, Device Name " />
+                    placeholder="        Search by Order Id, Device Name " /> */}
+
+                <SearchInput/>
 
                 <View style={HeaderStyles.filters}>
                     <Image source={filtersImage} style={filtersImage} />
@@ -231,7 +237,7 @@ const HeaderStyles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        position: 'relative',
+        // position: 'relative',
     },
 
     searchImage: {

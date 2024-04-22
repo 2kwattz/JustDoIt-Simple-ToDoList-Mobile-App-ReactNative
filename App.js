@@ -13,12 +13,14 @@ import fonts from './styles/fonts';
 import Header from './components/layouts/Header';
 import Form from './components/layouts/Form';
 import Section from './components/layouts/Section';
+import Navigation from './components/layouts/Navigation';
 
 export default function App() {
   return (
     <React.Fragment>
     <Header/>
     <Form/>
+    <Navigation/>
     
     </React.Fragment>
   );

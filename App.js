@@ -16,6 +16,10 @@ import Section from './components/layouts/Section';
 
 export default function App() {
   return (
+    <React.Fragment>
     <Header/>
+    <Form/>
+    
+    </React.Fragment>
   );
 }

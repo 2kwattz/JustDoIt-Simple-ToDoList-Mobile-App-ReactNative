@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image } from 'react-native';
-
 // StyleSheets
 
 // import globalStyles from '../styles/globalStyles';
@@ -12,12 +11,14 @@ import fonts from '../../styles/fonts';
 
 // Components
 
-import Input from '../../components/elements/input';
+import Components from '../../styles/components';
 
 const Header = () => {
 
     const arrowButtonImage = require('../../assets/Header/arrow-left.png')
     const notificationBellImage = require('../../assets/Header/notification.png')
+    const searchImage = require('../../assets/Header/search.png')
+    const filtersImage = require('../../assets/Header/filters.png')
 
     return (
 
@@ -63,9 +64,20 @@ const Header = () => {
                     </Text></View>
                 </View>
 
+                {/* <View style={HeaderStyles.navigationItems}>
+                    <Text style={HeaderStyles.navigationItemText}> Fulfilled  <Text style={HeaderStyles.Notifications}> 6 </Text>  </Text>
+                </View> */}
+
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Fulfilled  <Text style={HeaderStyles.Notifications}> 6 </Text>  </Text>
                 </View>
+
+                {/* <View style={HeaderStyles.navigationItems}>
+                    <Text style={HeaderStyles.navigationItem}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
+                        3
+                    </Text></View>
+                </View> */}
+
 
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Cancelled  <Text style={HeaderStyles.Notifications}> 2 </Text> </Text>
@@ -75,6 +87,20 @@ const Header = () => {
             </View>
 
             <View style={HeaderStyles.horizontalLine}></View>
+
+            <View style={HeaderStyles.searchSection}>
+                <Image source={searchImage} style={[HeaderStyles.searchImage, { position: 'absolute', left: '9%' },]}>
+
+                </Image>
+                <TextInput style={Components.SearchInput}
+                    placeholder="        Search by Order Id, Device Name " />
+
+                <View style={HeaderStyles.filters}>
+                    <Image source={filtersImage} style={filtersImage} />
+                </View>
+            </View>
+
+
 
         </React.Fragment>
     )
@@ -128,31 +154,29 @@ const HeaderStyles = StyleSheet.create({
     },
 
     navigationItems: {
-        borderRadius: 20,
+        borderRadius: 50,
         marginVertical: 4,
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
-        
+
     },
 
     navigationItemText: {
         padding: 10,
         fontWeight: '700',
-        color: Colors.greyPrimary,
+        fontSize: 15,
+        color: Colors.subheading,
 
     },
 
     navigationActiveItem: {
         backgroundColor: Colors.blueSecondary,
-        
-
-
     },
 
     navigationItemTextActive: {
         color: Colors.bluePrimary,
-        padding: 10,
+        paddingHorizontal: 7,
         fontWeight: '700',
 
     },
@@ -160,6 +184,13 @@ const HeaderStyles = StyleSheet.create({
     innertextActive: {
         fontWeight: '700',
         color: Colors.bluePrimary,
+        paddingHorizontal: 7,
+        borderRadius: 90,
+    },
+
+    innertext: {
+        fontWeight: '700',
+        color: Colors.greenPrimary,
         paddingVertical: 1,
         paddingHorizontal: 9,
         borderRadius: 50,
@@ -169,9 +200,9 @@ const HeaderStyles = StyleSheet.create({
 
     activeNotifications: {
         backgroundColor: 'rgba(28, 170, 212, 0.09)',
-        borderRadius: 30,
+        borderRadius: 40,
         padding: 2,
-        margin:10,
+        margin: 10,
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
@@ -189,7 +220,31 @@ const HeaderStyles = StyleSheet.create({
 
     },
 
+    // Search Section
 
+    searchSection: {
+        
+        marginVertical: 35,
+        flex: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        position: 'relative',
+    },
+
+    searchImage: {
+        marginRight: 40,
+    },
+
+    // Filters
+
+    filters: {
+        borderRadius: 30,
+    },
+    filtersImage: {
+        objectFit: 'contain',
+        height: 145,
+    }
 
 })
 

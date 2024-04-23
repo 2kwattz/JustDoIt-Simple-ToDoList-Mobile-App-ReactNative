@@ -14,7 +14,7 @@ import SearchInput from '../elements/SearchInput';
 const drawerContent = ({navigation}) => {
     return (
         <View style={drawerContentStyles.popup}>
-            Lorem Ipsum Dopium 
+            <Text> Lorem Ipsum Dopium </Text>
         </View>
     )
 }

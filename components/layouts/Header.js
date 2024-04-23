@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image } from 'react-native';
+// import { useFonts } from "expo-font";
+import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // StyleSheets
 
 // import globalStyles from '../styles/globalStyles';
 import globalStyles from '../../styles/globalStyles';
 
 import Colors from '../../styles/colors';
-import fonts from '../../styles/fonts';
+// import Fonts from '../../assets/Fonts'
+import { useFonts } from 'expo-font';
 
 // Components
 
@@ -16,6 +21,20 @@ import SearchInput from '../elements/SearchInput';
 
 const Header = () => {
 
+    const [fontsLoaded] = useFonts({
+        Manrope_400Regular,
+        Manrope_500Medium,
+        Manrope_700Bold,
+      });
+    
+      if (!fontsLoaded) {
+        return null; // Or render a loading indicator
+      }
+
+      else if(fontsLoaded == true){
+        console.log("Fonts loaded SUccessfully")
+      }
+    
     const arrowButtonImage = require('../../assets/Header/arrow-left.png')
     const notificationBellImage = require('../../assets/Header/notification.png')
     const searchImage = require('../../assets/Header/search.png')
@@ -59,28 +78,30 @@ const Header = () => {
                         3
                     </Text> </Text>
                 </View> */}
-
+                <View style={HeaderStyles.navItemWrapper}>
                 <View style={[HeaderStyles.navigationItems, HeaderStyles.navigationActiveItem]}>
                     <Text style={HeaderStyles.navigationItemTextActive}> New </Text><View style={HeaderStyles.activeNotifications}><Text style={HeaderStyles.innertextActive}>
                         3
                     </Text></View>
-                </View>
+                </View></View>
 
+                <View style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey2]}>
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
                         6
                     </Text></View>
-                </View>
+                </View></View>
 
+                <View style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey3]}>
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Cancelled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
                         2
                     </Text></View>
-                </View>
+                </View></View>
 
             </View>
 
-            <View style={HeaderStyles.horizontalLine}></View>
+            {/* <View style={HeaderStyles.horizontalLine}></View> */}
 
             {/* Input Search Section */}
 
@@ -126,14 +147,22 @@ const HeaderStyles = StyleSheet.create({
     headerImages: {
         objectFit: 'contain',
         width: 50,
-
-
     },
+
+    navItemWrapperGrey:{
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.greyMed,
+        paddingLeft: 4,
+        
+    },
+
+  
 
     heading: {
         fontSize: 20,
         fontWeight: '700',
         color: Colors.blackPrimary,
+        fontFamily: 'Manrope_700Bold',
         textAlign: 'center',
 
     },
@@ -147,9 +176,10 @@ const HeaderStyles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         width: '100%',
         marginHorizontal: 10,
+        
     },
 
     navigationItems: {
@@ -162,10 +192,11 @@ const HeaderStyles = StyleSheet.create({
     },
 
     navigationItemText: {
-        padding: 5,
+        padding: 11.5,
         fontWeight: '700',
         fontSize: 15,
         color: Colors.subheading,
+        
 
     },
 
@@ -176,9 +207,28 @@ const HeaderStyles = StyleSheet.create({
     navigationItemTextActive: {
         color: Colors.bluePrimary,
         paddingLeft: 10,
-        // paddingHorizontal: 10,
+        paddingHorizontal: 3,
         fontWeight: '700',
 
+    },
+
+    navItemWrapper:{
+        borderBottomWidth: 3,
+        // borderColor: 'transparent',
+        borderBottomColor: Colors.bluePrimary,
+        paddingHorizontal: 2,
+        flex:0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+
+    navItemWrapperGrey2:{
+        paddingLeft: 10,
+    },
+
+    navItemWrapperGrey3:{
+        paddingRight: 3,
     },
 
     innertextActive: {
@@ -249,10 +299,16 @@ const HeaderStyles = StyleSheet.create({
     filters: {
         borderRadius: 30,
     },
+    
     filtersImage: {
         objectFit: 'contain',
         height: 145,
-    }
+    },
+
+    textBold:{
+        fontFamily: 'Manrope_700Bold',
+
+    },
 
 })
 

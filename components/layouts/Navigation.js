@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, ScrollView, TextInput, Image, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { Text, View, ScrollView, TextInput, Image, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
 
 import globalStyles from '../../styles/globalStyles';
 
@@ -15,51 +15,60 @@ const MessageImage = require('../../assets/Navigation/message.png')
 const ProfileImage = require('../../assets/Navigation/profile.png')
 const BookImage = require('../../assets/Navigation/book.png')
 
+
+
 const Navigation = () => {
 
     return (
 
         <React.Fragment>
 
-            <View style={NavigationStyles.NavContainer}>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : null}
+                keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
 
-                <View style={NavigationStyles.NavContainerItem}>
-                    <Image source={HomeImage} style={NavigationStyles.NavImages} />
+                <View style={NavigationStyles.NavContainer}>
+
+                    <View style={NavigationStyles.NavContainerItem}>
+                        <Image source={HomeImage} style={NavigationStyles.NavImages} />
 
 
-                    <Text style={NavigationStyles.NavContainerText}>
-                        Home 
-                    </Text>
+                        <Text style={NavigationStyles.NavContainerText}>
+                            Home
+                        </Text>
+                    </View>
+
+                    <View style={NavigationStyles.NavContainerItem}>
+                        <Image source={BookImage} style={NavigationStyles.NavImages} />
+
+                        <Text style={NavigationStyles.NavContainerText}>
+                            Orders
+                        </Text>
+                    </View>
+
+                    <View style={NavigationStyles.NavContainerItem}>
+                        <Image source={MessageImage} style={NavigationStyles.NavImages} />
+
+
+                        <Text style={NavigationStyles.NavContainerText}>
+                            Chat
+                        </Text>
+                    </View>
+
+                    <View style={NavigationStyles.NavContainerItem}>
+                        <Image source={ProfileImage} style={NavigationStyles.NavImages} />
+
+
+                        <Text style={NavigationStyles.NavContainerText}>
+                            Accounts
+                        </Text>
+                    </View>
+
                 </View>
-
-                <View style={NavigationStyles.NavContainerItem}>
-                    <Image source={BookImage} style={NavigationStyles.NavImages} />
-
-                    <Text style={NavigationStyles.NavContainerText}>
-                        Orders
-                    </Text>
-                </View>
-
-                <View style={NavigationStyles.NavContainerItem}>
-                    <Image source={MessageImage} style={NavigationStyles.NavImages} />
-
-
-                    <Text style={NavigationStyles.NavContainerText}>
-                        Chat
-                    </Text>
-                </View>
-
-                <View style={NavigationStyles.NavContainerItem}>
-                    <Image source={ProfileImage} style={NavigationStyles.NavImages} />
-
-
-                    <Text style={NavigationStyles.NavContainerText}>
-                        Accounts
-                    </Text>
-                </View>
-
-            </View>
+            </KeyboardAvoidingView>
         </React.Fragment>
+
     )
 }
 
@@ -92,7 +101,7 @@ const NavigationStyles = StyleSheet.create({
 
     },
 
-    NavContainerText:{
+    NavContainerText: {
         color: Colors.greyPrimary,
     },
 
@@ -102,7 +111,7 @@ const NavigationStyles = StyleSheet.create({
 
     },
 
-    NavImages:{
+    NavImages: {
         height: 30,
         objectFit: 'contain',
     },

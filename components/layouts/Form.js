@@ -8,6 +8,9 @@ import globalStyles from '../../styles/globalStyles';
 import Colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 // Components
 
 import Components from '../../styles/components';
@@ -21,8 +24,6 @@ const calenderImage = require('../../assets/Order/calendar-tick.png')
 const Form = () => {
     return (
         <React.Fragment>
-
-
             <View style={FormStyles.order}>
                 <View style={FormStyles.orderHeader}>
                     <Text style={FormStyles.orderId}>
@@ -130,6 +131,7 @@ const FormStyles = StyleSheet.create({
         borderRadius: 20,
         marginHorizontal: 20,
         paddingBottom: 15,
+       
     },
 
     // Section One : Order Header
@@ -191,8 +193,6 @@ const FormStyles = StyleSheet.create({
     orderDetailsTextKey:{
         color: Colors.subheading,
         marginLeft: 4,
-       
-
     },
 
     orderDetailsTextValue:{
@@ -210,7 +210,7 @@ const FormStyles = StyleSheet.create({
 
     arrowSquareRightStyle:{
         objectFit: 'contain',
-        height: 20,
+        height: 22,
         
     }
 

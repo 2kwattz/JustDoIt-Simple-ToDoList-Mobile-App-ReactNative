@@ -3,8 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image } from 'react-native';
 // import { useFonts } from "expo-font";
 import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Form from './Form'
+import Shipped from './Shipped';
 // StyleSheets
 
 // import globalStyles from '../styles/globalStyles';
@@ -19,8 +20,12 @@ import { useFonts } from 'expo-font';
 import Components from '../../styles/components';
 import SearchInput from '../elements/SearchInput';
 
-const Header = () => {
 
+
+const Header = ({setActiveTab}) => {
+
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    
     const [fontsLoaded] = useFonts({
         Manrope_400Regular,
         Manrope_500Medium,
@@ -39,6 +44,7 @@ const Header = () => {
     const notificationBellImage = require('../../assets/Header/notification.png')
     const searchImage = require('../../assets/Header/search.png')
     const filtersImage = require('../../assets/Header/filters.png')
+
     
 
     return (
@@ -79,18 +85,18 @@ const Header = () => {
                     </Text> </Text>
                 </View> */}
                 <View style={HeaderStyles.navItemWrapper}>
-                <View style={[HeaderStyles.navigationItems, HeaderStyles.navigationActiveItem]}>
+                <TouchableOpacity style={[HeaderStyles.navigationItems, HeaderStyles.navigationActiveItem]} onPress={() => setActiveTab('Form')}>
                     <Text style={HeaderStyles.navigationItemTextActive}> New </Text><View style={HeaderStyles.activeNotifications}><Text style={HeaderStyles.innertextActive}>
                         3
                     </Text></View>
-                </View></View>
+                </TouchableOpacity></View>
 
-                <View style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey2]}>
+                <TouchableOpacity style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey2]} onPress={() => setActiveTab('Shipped')}>
                 <View style={HeaderStyles.navigationItems}>
                     <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
                         6
                     </Text></View>
-                </View></View>
+                </View></TouchableOpacity   >
 
                 <View style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey3]}>
                 <View style={HeaderStyles.navigationItems}>

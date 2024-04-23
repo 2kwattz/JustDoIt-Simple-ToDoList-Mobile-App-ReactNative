@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, ScrollView, TextInput, Image, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
 
 import globalStyles from '../../styles/globalStyles';
@@ -88,6 +88,7 @@ const NavigationStyles = StyleSheet.create({
         borderColor: Colors.greySecondary,
         borderWidth: 1,
         paddingVertical: 10,
+        backgroundColor: 'white',
 
 
 

@@ -8,8 +8,8 @@ import globalStyles from '../../styles/globalStyles';
 import Colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 
 // Components
 
@@ -17,12 +17,11 @@ import Components from '../../styles/components';
 import DottedLine from '../elements/dottedLine';
 import editImage from '../../assets/Order/edit.png';
 import downwardArrow from '../../assets/Order/arrow-down.png'
-import Navigation from './Navigation';
 const arrowSquareRight = require('../../assets/Order/arrow-square-right.png')
 
 const calenderImage = require('../../assets/Order/calendar-tick.png')
 
-const Form = (selectedTab) => {
+const Shipped = () => {
     return (
         <React.Fragment>
             <View style={FormStyles.order}>
@@ -35,7 +34,7 @@ const Form = (selectedTab) => {
                         <Image source={calenderImage} style={FormStyles.greenBadgeImage} />
 
 
-                        <Text style={FormStyles.greenBadgeText}> Ready For Pickup </Text>
+                        <Text style={FormStyles.greenBadgeText}> Delivered Successfully </Text>
                     </View>
                 </View>
 
@@ -102,7 +101,7 @@ const Form = (selectedTab) => {
                 <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Delivery Method </Text>
-                        <Text style={FormStyles.orderDetailsTextValue}> Pickup <Image source={editImage}/> </Text>
+                        <Text style={FormStyles.orderDetailsTextValue}> COD <Image source={editImage}/> </Text>
                     </View>
                     
                 </View>
@@ -118,7 +117,6 @@ const Form = (selectedTab) => {
 
             </View>
             </View>
-
         </React.Fragment>
     )
 }
@@ -133,7 +131,6 @@ const FormStyles = StyleSheet.create({
         borderRadius: 20,
         marginHorizontal: 20,
         paddingBottom: 15,
-        backgroundColor: 'white',
        
     },
 
@@ -144,7 +141,6 @@ const FormStyles = StyleSheet.create({
         flex: 0,
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: 'white',
     },
 
     // Order Tracking Id
@@ -217,19 +213,8 @@ const FormStyles = StyleSheet.create({
         height: 22,
         
     }
-
-
-
-    
-
-
-
-
-
-
-
 })
 
-export default Form
+export default Shipped
 
 

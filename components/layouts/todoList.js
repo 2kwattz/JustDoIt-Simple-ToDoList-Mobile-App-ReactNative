@@ -1,26 +1,42 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image, DatePickerAndroid } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image, DatePickerAndroid, FlatList} from 'react-native';
 import LogoImage from '../../assets/todo/todoList.png'
 // StyleSheets
 
 import Colors from '../../styles/colors';
 
-const ToDoList = () =>{
 
-    let tasks = []
+const ToDoList = () =>{
+    
+    const [task, SetTask] = useState('')
+
+    let tasks = [
+        {
+            task: "Eat Burger",
+        },
+    ];
+
+    function renderToDo(item,index){
+        return (
+            <View style={ToDoListStyles.listItem}><View>
+            <Text> {item.item.task} </Text>
+                </View>
+            <TouchableOpacity style={ToDoListStyles.btn}><Text style={ToDoListStyles.btnText}> Delete Task</Text></TouchableOpacity>
+            
+            </View>  
+        )
+    }
 
 
     return (
 
 
     <View style={ToDoListStyles.container}>
-        <View style={ToDoListStyles.listItem}><View>
-        <Text> Task 1 </Text>
-            </View>
-        <TouchableOpacity style={ToDoListStyles.btn}><Text style={ToDoListStyles.btnText}> Delete Task</Text></TouchableOpacity>
-        
-        </View>
+        <FlatList data={tasks} renderItem={renderToDo}/>
 
+
+       
+        
     </View>
 
     )

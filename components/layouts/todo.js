@@ -39,12 +39,13 @@ const ToDoNavbar = () => {
 
                 </View>
             </View>
+            <ScrollView>
             <View style={ToDoListStyles.container}>
 
                 {
                     storedTask.map(function (item) {
                         return (
-                            <ScrollView>
+                        
 
                             <View key={item.id} style={ToDoListStyles.listItem}><View>
                                 <Text> {item.task} </Text>
@@ -52,11 +53,12 @@ const ToDoNavbar = () => {
                                 <TouchableOpacity style={ToDoListStyles.btn}><Text style={ToDoListStyles.btnText}> Delete Task</Text></TouchableOpacity>
 
                             </View>
-                            </ScrollView>
+                           
                         )
                     })
                 }
             </View>
+            </ScrollView>
         </>
 
     )

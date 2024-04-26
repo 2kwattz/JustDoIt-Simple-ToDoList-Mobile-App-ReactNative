@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, ScrollView, TextInput, TouchableOpacity, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createStackNavigator } from '@react-navigation/native-stack';
@@ -63,8 +63,8 @@ export default function App() {
 
 
       <ToDoNavbar />
-      <ToDoContainer />
-      <ToDoList />
+      {/* <ToDoContainer />
+      <ToDoList /> */}
       {/* <NavigationContainer>
         <Drawer.Navigator
           drawerContent={(props) => <DrawerContent {...props} />}

@@ -8,8 +8,15 @@ import Colors from '../../styles/colors';
 const ToDoContainer = () =>{
 
     const [taskMessage, SetTaskMessage] = useState('')
+    const [ToDoListData, SetToDoListData] = useState([])
 
-    console.log(taskMessage)
+    // console.log(taskMessage)
+
+    function saveTask(){
+        SetToDoListData(...taskMessage, {id: Date.now().toString(), task: taskMessage })
+    }
+
+   
     return (
         <React.Fragment>
             <View style={ToDoContainerStyles.container}>
@@ -18,11 +25,11 @@ const ToDoContainer = () =>{
                 <View style={ToDoContainerStyles.form}>
                     <TextInput style={ToDoContainerStyles.inputText} value={taskMessage} onChangeText={
                         function(text){
-                            console.log(text)
+                            SetTaskMessage(text)
                            
                         }
                     } placeholder="Enter your tasks"></TextInput>
-                    <TouchableOpacity style={ToDoContainerStyles.btn}><Text style={ToDoContainerStyles.btnText}> Add Task </Text></TouchableOpacity>
+                    <TouchableOpacity style={ToDoContainerStyles.btn} onPress={saveTask}><Text style={ToDoContainerStyles.btnText}> Add Task </Text></TouchableOpacity>
                     
                 </View>
             </View>

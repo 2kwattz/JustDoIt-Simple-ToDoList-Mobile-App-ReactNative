@@ -7,11 +7,8 @@ import Colors from '../../styles/colors';
 
 const ToDoContainer = () =>{
 
-    const [date,SetDate] = useState('')
-
-    const handelDateChange = (text) => {
-        SetDate(text)
-    }
+    const tasks = [];
+    
     return (
         <React.Fragment>
             <View style={ToDoContainerStyles.container}>

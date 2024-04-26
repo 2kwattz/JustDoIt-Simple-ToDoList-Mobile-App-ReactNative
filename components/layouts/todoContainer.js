@@ -7,15 +7,21 @@ import Colors from '../../styles/colors';
 
 const ToDoContainer = () =>{
 
-    const tasks = [];
-    
+    const [taskMessage, SetTaskMessage] = useState('')
+
+    console.log(taskMessage)
     return (
         <React.Fragment>
             <View style={ToDoContainerStyles.container}>
                 <Text style={ToDoContainerStyles.subheading}> Enter your day to day life tasks </Text>
 
                 <View style={ToDoContainerStyles.form}>
-                    <TextInput style={ToDoContainerStyles.inputText} placeholder="Enter your tasks"></TextInput>
+                    <TextInput style={ToDoContainerStyles.inputText} value={taskMessage} onChangeText={
+                        function(text){
+                            console.log(text)
+                           
+                        }
+                    } placeholder="Enter your tasks"></TextInput>
                     <TouchableOpacity style={ToDoContainerStyles.btn}><Text style={ToDoContainerStyles.btnText}> Add Task </Text></TouchableOpacity>
                     
                 </View>

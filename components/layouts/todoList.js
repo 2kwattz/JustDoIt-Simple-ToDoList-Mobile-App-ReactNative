@@ -6,9 +6,11 @@ import LogoImage from '../../assets/todo/todoList.png'
 import Colors from '../../styles/colors';
 
 
-const ToDoList = () =>{
+const ToDoList = ({taskMessage}) =>{
+
+    console.log(taskMessage)
     
-    const [task, SetTask] = useState('')
+   
 
     let tasks = [
         {

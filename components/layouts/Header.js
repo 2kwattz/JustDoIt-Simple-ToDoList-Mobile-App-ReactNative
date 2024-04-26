@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
+import { DrawerActions } from '@react-navigation/native';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image } from 'react-native';
 // import { useFonts } from "expo-font";
+// import drawerContent from '../components/layouts/drawerContent';
 import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
 
 import Form from './Form'
@@ -16,36 +18,51 @@ import Colors from '../../styles/colors';
 import { useFonts } from 'expo-font';
 
 // Components
-
-import Components from '../../styles/components';
 import SearchInput from '../elements/SearchInput';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
-const Header = ({setActiveTab}) => {
+const Header = ({ setActiveTab, toggleDrawer }) => {
 
-    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-    
+    // const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    // const handleToggleDrawer = () => {
+    //     setIsDrawerVisible(!isDrawerVisible);
+    // };
+
+    const renderTab = () => {
+        switch (setActiveTab) {
+          case 'Form':
+            {isDrawerVisible && <drawerContent onClose={() => setIsDrawerVisible(false)} />}
+            return <Form />;
+          case 'Shipped':
+            return <Shipped/>
+          default:
+            return null;
+        }
+      };
+
+
     const [fontsLoaded] = useFonts({
         Manrope_400Regular,
         Manrope_500Medium,
         Manrope_700Bold,
-      });
-    
-      if (!fontsLoaded) {
-        return null; // Or render a loading indicator
-      }
+    });
 
-      else if(fontsLoaded == true){
+    if (!fontsLoaded) {
+        return null; // Or render a loading indicator
+    }
+
+    else if (fontsLoaded == true) {
         console.log("Fonts loaded SUccessfully")
-      }
-    
+    }
+
     const arrowButtonImage = require('../../assets/Header/arrow-left.png')
     const notificationBellImage = require('../../assets/Header/notification.png')
     const searchImage = require('../../assets/Header/search.png')
     const filtersImage = require('../../assets/Header/filters.png')
 
-    
+
 
     return (
 
@@ -53,7 +70,11 @@ const Header = ({setActiveTab}) => {
 
             {/* Header Section */}
 
-            <View style={HeaderStyles.body}>
+            <View style={HeaderStyles.body} onPress={function(){
+                if (props.toggleDrawer == false){
+                    props.toggleDrawer == true
+                }
+            }}>
                 <View style={HeaderStyles.headerParent}>
                     <View style={HeaderStyles.headerItems}>
                         <Image source={arrowButtonImage} style={{ height: 30, marginLeft: 14 }}>
@@ -85,25 +106,25 @@ const Header = ({setActiveTab}) => {
                     </Text> </Text>
                 </View> */}
                 <View style={HeaderStyles.navItemWrapper}>
-                <TouchableOpacity style={[HeaderStyles.navigationItems, HeaderStyles.navigationActiveItem]} onPress={() => setActiveTab('Form')}>
-                    <Text style={HeaderStyles.navigationItemTextActive}> New </Text><View style={HeaderStyles.activeNotifications}><Text style={HeaderStyles.innertextActive}>
-                        3
-                    </Text></View>
-                </TouchableOpacity></View>
+                    <TouchableOpacity style={[HeaderStyles.navigationItems, HeaderStyles.navigationActiveItem]} onPress={() => setActiveTab('Form')}>
+                        <Text style={HeaderStyles.navigationItemTextActive}> New </Text><View style={HeaderStyles.activeNotifications}><Text style={HeaderStyles.innertextActive}>
+                            3
+                        </Text></View>
+                    </TouchableOpacity></View>
 
-                <TouchableOpacity style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey2]} onPress={() => setActiveTab('Shipped')}>
-                <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
-                        6
-                    </Text></View>
-                </View></TouchableOpacity   >
+                <TouchableOpacity style={[HeaderStyles.navItemWrapperGrey, HeaderStyles.navItemWrapperGrey2]} onPress={() => setActiveTab('Shipped')}>
+                    <View style={HeaderStyles.navigationItems}>
+                        <Text style={HeaderStyles.navigationItemText}> Fulfilled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
+                            6
+                        </Text></View>
+                    </View></TouchableOpacity   >
 
-                <View style={[HeaderStyles.navItemWrapperGrey,HeaderStyles.navItemWrapperGrey3]}>
-                <View style={HeaderStyles.navigationItems}>
-                    <Text style={HeaderStyles.navigationItemText}> Cancelled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
-                        2
-                    </Text></View>
-                </View></View>
+                <View style={[HeaderStyles.navItemWrapperGrey, HeaderStyles.navItemWrapperGrey3]}>
+                    <View style={HeaderStyles.navigationItems}>
+                        <Text style={HeaderStyles.navigationItemText}> Cancelled </Text><View style={HeaderStyles.Notifications}><Text style={HeaderStyles.innertext}>
+                            2
+                        </Text></View>
+                    </View></View>
 
             </View>
 
@@ -118,11 +139,13 @@ const Header = ({setActiveTab}) => {
                 <TextInput style={Components.SearchInput}
                     placeholder="        Search by Order Id, Device Name " /> */}
 
-                <SearchInput/>
+                <SearchInput />
 
-                <View style={HeaderStyles.filters}>
-                    <Image source={filtersImage} style={filtersImage} />
-                </View>
+                <TouchableOpacity style={HeaderStyles.filters} onPress={toggleDrawer}>
+                    <Image source={filtersImage} style={HeaderStyles.filtersImage} />
+                </TouchableOpacity>
+
+
             </View>
 
 
@@ -155,14 +178,14 @@ const HeaderStyles = StyleSheet.create({
         width: 50,
     },
 
-    navItemWrapperGrey:{
+    navItemWrapperGrey: {
         borderBottomWidth: 1,
         borderBottomColor: Colors.greyMed,
         paddingLeft: 4,
-        
+
     },
 
-  
+
 
     heading: {
         fontSize: 20,
@@ -185,7 +208,7 @@ const HeaderStyles = StyleSheet.create({
         // justifyContent: 'space-around',
         width: '100%',
         marginHorizontal: 10,
-        
+
     },
 
     navigationItems: {
@@ -202,7 +225,7 @@ const HeaderStyles = StyleSheet.create({
         fontWeight: '700',
         fontSize: 15,
         color: Colors.subheading,
-        
+
 
     },
 
@@ -218,22 +241,22 @@ const HeaderStyles = StyleSheet.create({
 
     },
 
-    navItemWrapper:{
+    navItemWrapper: {
         borderBottomWidth: 3,
         // borderColor: 'transparent',
         borderBottomColor: Colors.bluePrimary,
         paddingHorizontal: 2,
-        flex:0,
+        flex: 0,
         flexDirection: 'row',
         justifyContent: 'center',
         textAlign: 'center',
     },
 
-    navItemWrapperGrey2:{
+    navItemWrapperGrey2: {
         paddingLeft: 10,
     },
 
-    navItemWrapperGrey3:{
+    navItemWrapperGrey3: {
         paddingRight: 3,
     },
 
@@ -287,7 +310,7 @@ const HeaderStyles = StyleSheet.create({
     // Search Section
 
     searchSection: {
-        
+
         marginVertical: 35,
         flex: 0,
         flexDirection: 'row',
@@ -305,13 +328,13 @@ const HeaderStyles = StyleSheet.create({
     filters: {
         borderRadius: 30,
     },
-    
+
     filtersImage: {
         objectFit: 'contain',
         height: 145,
     },
 
-    textBold:{
+    textBold: {
         fontFamily: 'Manrope_700Bold',
 
     },

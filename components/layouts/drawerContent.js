@@ -1,28 +1,45 @@
-import React, { useState } from 'react'
-import { Text, View, ScrollView, TextInput, Image, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import globalStyles from '../../styles/globalStyles';
+const DrawerContent = ({ navigation }) => {
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
 
-import Colors from '../../styles/colors';
-import { useFonts } from 'expo-font';
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigateToScreen('Home')}>
+        <Text style={styles.link}>Home</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Profile')}>
+        <Text style={styles.link}>Profile</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Settings')}>
+        <Text style={styles.link}>Settings</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('About')}>
+        <Text style={styles.link}>About</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-// Components
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 20,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+  
+  },
+  link: {
+    fontSize: 18,
+    marginBottom: 20,
+    color: '#000',
+  },
+});
 
-import Components from '../../styles/components';
-import SearchInput from '../elements/SearchInput';
-
-const drawerContent = ({navigation}) => {
-    return (
-        <View style={drawerContentStyles.popup}>
-            <Text> Lorem Ipsum Dopium </Text>
-        </View>
-    )
-}
-
-const drawerContentStyles = StyleSheet.create({
-
-    popup:{
-        backgroundColor: Colors.greySecondary,
-
-    }
-})
+export default DrawerContent;

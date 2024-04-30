@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Button, Image, DatePickerAndroid } from 'react-native';
 import LogoImage from '../../assets/todo/todoList.png'
+import SQLite from 'react-native-sqlite-storage';
 // StyleSheets
 
 import Colors from '../../styles/colors';
 
-const ToDoContainer = () =>{
+const Settings = () =>{
 
     const [taskMessage, SetTaskMessage] = useState('')
     const [ToDoListData, SetToDoListData] = useState([])
@@ -20,7 +21,7 @@ const ToDoContainer = () =>{
     return (
         <React.Fragment>
             <View style={ToDoContainerStyles.container}>
-                <Text style={ToDoContainerStyles.subheading}> Enter your day to day life tasks </Text>
+                <Text style={ToDoContainerStyles.subheading}> Settings </Text>
 
                 <View style={ToDoContainerStyles.form}>
                     <TextInput style={ToDoContainerStyles.inputText} value={taskMessage} onChangeText={
@@ -78,4 +79,4 @@ const ToDoContainerStyles = StyleSheet.create({
 
 })
 
-export default ToDoContainer
+export default Settings

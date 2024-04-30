@@ -311,7 +311,7 @@ const HeaderStyles = StyleSheet.create({
 
     searchSection: {
 
-        marginVertical: 35,
+        // marginVertical: 35,
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',

@@ -22,9 +22,10 @@ const arrowSquareRight = require('../../assets/Order/arrow-square-right.png')
 
 const calenderImage = require('../../assets/Order/calendar-tick.png')
 
-const Form = (selectedTab) => {
+const Form = ({toggleBottomSheet}) => {
     return (
         <React.Fragment>
+               <View style={{elevation: 50}}>
             <View style={FormStyles.order}>
                 <View style={FormStyles.orderHeader}>
                     <Text style={FormStyles.orderId}>
@@ -60,7 +61,6 @@ const Form = (selectedTab) => {
                 </View>
 
                 <DottedLine />
-
                 {/* Order Type */}
 
                 <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
@@ -70,7 +70,6 @@ const Form = (selectedTab) => {
                     </View>
                     
                 </View>
-
                 <DottedLine />
 
                 {/* Product Details */}
@@ -82,7 +81,6 @@ const Form = (selectedTab) => {
                     </View>
                     
                 </View>
-
                 <DottedLine />
 
                 {/* FInancial Responsibility */}
@@ -92,7 +90,6 @@ const Form = (selectedTab) => {
                         <Text style={FormStyles.orderDetailsTextKey}> Financial Responsibility </Text>
                         <Text style={[FormStyles.orderDetailsTextGreen,{marginRight: 7,}]}> Paid </Text>
                     </View>
-                    
                 </View>
 
                 <DottedLine />
@@ -100,22 +97,20 @@ const Form = (selectedTab) => {
                 {/* Delivery Method */}
 
                 <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
-                    <View style={FormStyles.orderDetailsTextContainer}>
+                    <TouchableOpacity style={FormStyles.orderDetailsTextContainer} onPress={toggleBottomSheet}>
                         <Text style={FormStyles.orderDetailsTextKey}> Delivery Method </Text>
                         <Text style={FormStyles.orderDetailsTextValue}> Pickup <Image source={editImage}/> </Text>
-                    </View>
+                    </TouchableOpacity>
                     
                 </View>
 
                 <DottedLine />
-
                 <View style={[FormStyles.orderDetails,{margin: 5, marginLeft: 10}]}>
                     <View style={FormStyles.orderDetailsTextContainer}>
                         <Text style={FormStyles.orderDetailsTextKey}> Pickup Details </Text>
                         <Text style={FormStyles.orderDetailsTextGreen}> <Image source={downwardArrow}/> </Text>
                     </View>
-
-
+            </View>
             </View>
             </View>
 
@@ -133,7 +128,7 @@ const FormStyles = StyleSheet.create({
         borderRadius: 20,
         marginHorizontal: 20,
         paddingBottom: 15,
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
        
     },
 
@@ -144,7 +139,7 @@ const FormStyles = StyleSheet.create({
         flex: 0,
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
     },
 
     // Order Tracking Id

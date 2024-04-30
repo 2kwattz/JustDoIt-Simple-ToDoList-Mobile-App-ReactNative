@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, FlatList, Button, Image } from 'react-native';
+import { IconButton } from 'react-native-paper';
+
 import LogoImage from '../../assets/todo/todoList.png'
+import settingsImage from '../../assets/hamburger.png'
+import SQLite from 'react-native-sqlite-storage';
+
+
+import Settings from './todoContainer';
 // StyleSheets
 
 import Colors from '../../styles/colors';
@@ -10,11 +17,30 @@ const ToDoNavbar = () => {
     const [taskMessage, SetTaskMessage] = useState('')
     const [storedTask, SetStoredTask] = useState([])
 
-    function saveTask() {
+    const [Index, setIndex]= useState(1)
 
+     // Open settings
+
+     function renderSettings(){
+        setIndex(2)
+
+    }
+
+    function saveTask() {
         const storedTaskData = [...storedTask, { id: Date.now().toString(), task: taskMessage }]
         SetStoredTask(storedTaskData)
+        
         console.log(storedTaskData)
+    }
+    const renderViews = () =>{
+        switch(setIndex){
+            case 1:
+                null
+                break;
+            case 2:
+                <Settings/>
+                break;
+        }
     }
     return (
         <>
@@ -22,6 +48,10 @@ const ToDoNavbar = () => {
 
                 <Image source={LogoImage} style={ToDoNavbarStyles.logo}></Image>
 
+            </View>
+
+            <View style={ToDoNavbarStyles.settings} onPress={renderSettings}>
+                <Image source={settingsImage} style={ToDoNavbarStyles.settingsImage}/>
             </View>
 
             <View style={ToDoContainerStyles.container}>
@@ -59,6 +89,9 @@ const ToDoNavbar = () => {
                 }
             </View>
             </ScrollView>
+
+            {renderViews()}
+            
         </>
 
     )
@@ -95,7 +128,13 @@ const ToDoContainerStyles = StyleSheet.create({
 
     btnText: {
         color: Colors.whitePrimary,
-    }
+    },
+
+    settingsImage:{
+        height: 14,
+        width: 14,
+        backgroundColor: Colors.blackPrimary,
+    },
 })
 
 const ToDoListStyles = StyleSheet.create({
@@ -149,8 +188,15 @@ const ToDoNavbarStyles = StyleSheet.create({
 
     },
 
+    settings:{
+        padding: 9,
+   
+    },
 
-
+    settingsImage:{
+        height: 30,
+        width: 30,
+    }
 })
 
 export default ToDoNavbar

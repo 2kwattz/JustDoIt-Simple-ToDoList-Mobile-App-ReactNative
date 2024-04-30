@@ -89,9 +89,6 @@ const NavigationStyles = StyleSheet.create({
         borderWidth: 1,
         paddingVertical: 10,
         backgroundColor: 'white',
-
-
-
     },
 
     NavContainerItem: {
